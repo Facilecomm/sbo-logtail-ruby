@@ -1,3 +1,5 @@
+require "rack"
+
 # Base (must come first, order matters)
 require "logtail/version"
 require "logtail/config"
