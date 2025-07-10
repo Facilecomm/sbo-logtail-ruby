@@ -40,7 +40,9 @@ module Logtail
       end
 
       def create_default_logger(source_token, options = {})
-        if ENV['LOGTAIL_SKIP_LOGS'].blank? && !Rails.env.test?
+        skip_logs = ENV['LOGTAIL_SKIP_LOGS'].nil? || ENV['LOGTAIL_SKIP_LOGS'].empty?
+
+        if skip_logs && !Config.instance.test? 
           io_device = Logtail::LogDevices::HTTP.new(source_token, options)
         else
           io_device = STDOUT

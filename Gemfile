@@ -5,7 +5,8 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in logtail.gemspec
 gemspec
 
-gem "rake", "~> 13.0"
+require "rubygems/version"
 
+gem "base64" if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.4.0")
 gem "rspec", "~> 3.0"
-gem "base64" if RUBY_VERSION >= "3.4.0"
+gem "rake", "~> 13.0"
