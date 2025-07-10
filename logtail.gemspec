@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency('msgpack', '~> 1.0')
 
   spec.add_runtime_dependency 'railties', '>= 5.0.0'
+  spec.add_runtime_dependency 'actionpack', '>= 5.0.0'
 
   spec.add_development_dependency('bundler-audit', '>= 0')
   spec.add_development_dependency('rails_stdout_logging', '>= 0')
