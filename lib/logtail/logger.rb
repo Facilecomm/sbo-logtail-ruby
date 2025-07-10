@@ -45,8 +45,6 @@ module Logtail
         else
           io_device = STDOUT
         end
-
-        io_device = Logtail::LogDevices::HTTP.new(source_token)
         logger = self.create_logger(io_device)
 
         if defined?(Sidekiq)
