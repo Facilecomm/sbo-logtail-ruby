@@ -137,10 +137,6 @@ module Logtail
       Config::Middlewares
     end
 
-    def add_context(*objects)
-      CurrentContext.add(*objects)
-    end
-
     # This is the _main_ logger Logtail writes to. All of the Logtail integrations write to
     # this logger instance. It should be set to your global logger. For Rails, this is set
     # automatically to `Rails.logger`, you should not have to set this.
