@@ -39,8 +39,14 @@ module Logtail
         false
       end
 
-      def create_default_logger(source_token)
-        io_device = Logtail::LogDevices::HTTP.new(source_token)
+      def create_default_logger(source_token, options = {})
+        skip_logs = ENV['LOGTAIL_SKIP_LOGS'].nil? || ENV['LOGTAIL_SKIP_LOGS'].empty?
+
+        if skip_logs && !Config.instance.test? 
+          io_device = Logtail::LogDevices::HTTP.new(source_token, options)
+        else
+          io_device = STDOUT
+        end
         logger = self.create_logger(io_device)
 
         if defined?(Sidekiq)
